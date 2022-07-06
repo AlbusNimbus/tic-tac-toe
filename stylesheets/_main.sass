@@ -29,6 +29,7 @@ main
     align-items: center
     width: 100%
     height: auto
+
     .game-container
         width: 400px
         height: 400px
@@ -41,31 +42,40 @@ main
             background: $blue
             width:100% 
             height:100% 
-            .cell
+
+            .field
                 display: flex
+                position: relative
                 align-items: center
                 justify-content: center
                 background: $background
-            .cell.putx
+
                 .circle 
+                    display: none
+                    position: absolute
                     fill: none
                     stroke: $red
                     stroke-width: 12px
                     stroke-dasharray: 200px
                     stroke-dashoffset: 200px
                     stroke-linecap: round
-                    animation: draw 2s ease-out
-
-                .cross-1, .cross-2
+                    animation: draw forwards 0.3s ease-out
+                .circle.active 
+                    display: block
+                .cross
+                    display: none
+                    position: absolute
                     stroke: $darker-blue
                     stroke-width: 15px
                     stroke-linecap: round
                     stroke-dasharray: 200px
                     stroke-dashoffset: 300px
-                    animation: draw 2s ease-out
-                .cross-2
-                    animation: draw-rev 2s ease-out
-                
+                    #line-1
+                        animation: draw forwards 0.3s ease-out
+                    #line-2
+                        animation: draw-rev forwards 0.3s ease-out
+                .cross.active
+                    display: block
 
 @keyframes draw 
     to  

@@ -43,31 +43,44 @@ main .game-container .board {
   width: 100%;
   height: 100%;
 }
-main .game-container .board .cell {
+main .game-container .board .field {
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: center;
   background: #f1faee;
 }
-main .game-container .board .cell.putx .circle {
+main .game-container .board .field .circle {
+  display: none;
+  position: absolute;
   fill: none;
   stroke: #e63946;
   stroke-width: 12px;
   stroke-dasharray: 200px;
   stroke-dashoffset: 200px;
   stroke-linecap: round;
-  animation: draw 2s ease-out;
+  animation: draw forwards 0.3s ease-out;
 }
-main .game-container .board .cell.putx .cross-1, main .game-container .board .cell.putx .cross-2 {
+main .game-container .board .field .circle.active {
+  display: block;
+}
+main .game-container .board .field .cross {
+  display: none;
+  position: absolute;
   stroke: #1d3557;
   stroke-width: 15px;
   stroke-linecap: round;
   stroke-dasharray: 200px;
   stroke-dashoffset: 300px;
-  animation: draw 2s ease-out;
 }
-main .game-container .board .cell.putx .cross-2 {
-  animation: draw-rev 2s ease-out;
+main .game-container .board .field .cross #line-1 {
+  animation: draw forwards 0.3s ease-out;
+}
+main .game-container .board .field .cross #line-2 {
+  animation: draw-rev forwards 0.3s ease-out;
+}
+main .game-container .board .field .cross.active {
+  display: block;
 }
 
 @keyframes draw {

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="stylesheets/style.css">
     <title>Tic Tac Toe</title>
 </head>
+
 <body>
     <header>
         <p>Tic Tac Toe</p>
@@ -16,35 +18,87 @@
     <main>
         <div class="game-container">
             <div class="board">
-                <div class="cell" id="1">
-                    <svg svg viewBox="0 0 100 100" ><circle class="circle" r='30' cx='50' cy='50'/></svg>
+                <div class="field" id="0">
+                    <svg class="circle" viewBox="0 0 100 100">
+                        <circle r='30' cx='50' cy='50' />
+                    </svg>
+                    <svg class="cross" viewBox="0 0 100 100">
+                        <line id="line-1" x1="25" y1="25" x2="75" y2="75" />
+                        <line id="line-2" x1="75" y1="25" x2="25" y2="75" />
+                    </svg>
                 </div>
-                <div class="cell" id="2">
-                    <svg svg viewBox="0 0 100 100" ><circle class="circle" r='30' cx='50' cy='50'/></svg>
+                <div class="field" id="1">
+                    <svg class="circle" viewBox="0 0 100 100">
+                        <circle r='30' cx='50' cy='50' />
+                    </svg>
+                    <svg class="cross" viewBox="0 0 100 100">
+                        <line id="line-1" x1="25" y1="25" x2="75" y2="75" />
+                        <line id="line-2" x1="75" y1="25" x2="25" y2="75" />
+                    </svg>
                 </div>
-                <div class="cell" id="3">
-                    <svg svg viewBox="0 0 100 100" >   <line class="cross-1" x1="25" y1="25" x2="75" y2="75" />
-                        <line class="cross-2" x1="75" y1="25" x2="25" y2="75" /></svg>
+                <div class="field" id="2">
+                    <svg class="circle" viewBox="0 0 100 100">
+                        <circle r='30' cx='50' cy='50' />
+                    </svg>
+                    <svg class="cross" viewBox="0 0 100 100">
+                        <line id="line-1" x1="25" y1="25" x2="75" y2="75" />
+                        <line id="line-2" x1="75" y1="25" x2="25" y2="75" />
+                    </svg>
                 </div>
-                <div class="cell" id="4">
-                    <svg svg viewBox="0 0 100 100" ><circle class="circle" r='30' cx='50' cy='50'/></svg>
+                <div class="field" id="3">
+                    <svg class="circle" viewBox="0 0 100 100">
+                        <circle r='30' cx='50' cy='50' />
+                    </svg>
+                    <svg class="cross" viewBox="0 0 100 100">
+                        <line id="line-1" x1="25" y1="25" x2="75" y2="75" />
+                        <line id="line-2" x1="75" y1="25" x2="25" y2="75" />
+                    </svg>
                 </div>
-                
-                <div class="cell" id="5">
-                    <svg svg viewBox="0 0 100 100" >   <line class="cross-1" x1="25" y1="25" x2="75" y2="75" />
-                        <line class="cross-2" x1="75" y1="25" x2="25" y2="75" /></svg>
+
+                <div class="field" id="4">
+                    <svg class="circle" viewBox="0 0 100 100">
+                        <circle r='30' cx='50' cy='50' />
+                    </svg>
+                    <svg class="cross" viewBox="0 0 100 100">
+                        <line id="line-1" x1="25" y1="25" x2="75" y2="75" />
+                        <line id="line-2" x1="75" y1="25" x2="25" y2="75" />
+                    </svg>
                 </div>
-                <div class="cell" id="6">
-                    <svg svg viewBox="0 0 100 100" ><circle class="circle" r='30' cx='50' cy='50'/></svg>
+                <div class="field" id="5">
+                    <svg class="circle" viewBox="0 0 100 100">
+                        <circle r='30' cx='50' cy='50' />
+                    </svg>
+                    <svg class="cross" viewBox="0 0 100 100">
+                        <line id="line-1" x1="25" y1="25" x2="75" y2="75" />
+                        <line id="line-2" x1="75" y1="25" x2="25" y2="75" />
+                    </svg>
                 </div>
-                <div class="cell" id="7">
-                    <svg svg viewBox="0 0 100 100" ><circle class="circle" r='30' cx='50' cy='50'/></svg>
+                <div class="field" id="6">
+                    <svg class="circle" viewBox="0 0 100 100">
+                        <circle r='30' cx='50' cy='50' />
+                    </svg>
+                    <svg class="cross" viewBox="0 0 100 100">
+                        <line id="line-1" x1="25" y1="25" x2="75" y2="75" />
+                        <line id="line-2" x1="75" y1="25" x2="25" y2="75" />
+                    </svg>
                 </div>
-                <div class="cell" id="8">
-                    <svg svg viewBox="0 0 100 100" ><circle class="circle" r='30' cx='50' cy='50'/></svg>
+                <div class="field" id="7">
+                    <svg class="circle" viewBox="0 0 100 100">
+                        <circle r='30' cx='50' cy='50' />
+                    </svg>
+                    <svg class="cross" viewBox="0 0 100 100">
+                        <line id="line-1" x1="25" y1="25" x2="75" y2="75" />
+                        <line id="line-2" x1="75" y1="25" x2="25" y2="75" />
+                    </svg>
                 </div>
-                <div class="cell" id="9">
-                    <svg svg viewBox="0 0 100 100" ><circle class="circle" r='30' cx='50' cy='50'/></svg>
+                <div class="field" id="8">
+                    <svg class="circle" viewBox="0 0 100 100">
+                        <circle r='30' cx='50' cy='50' />
+                    </svg>
+                    <svg class="cross" viewBox="0 0 100 100">
+                        <line id="line-1" x1="25" y1="25" x2="75" y2="75" />
+                        <line id="line-2" x1="75" y1="25" x2="25" y2="75" />
+                    </svg>
                 </div>
             </div>
         </div>
@@ -57,4 +111,5 @@
         <p>Footer</p>
     </footer>
 </body>
+
 </html>
