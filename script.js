@@ -61,23 +61,32 @@ const gameController = (() => {
         }
         return [isWon,[]]
         //return winConditions.some((element) => { return (element.every((index) =>{ return( board[index] == player.sign)})) })
-
-        
-        
-
     }
 
-    return { playRound, getFieldValue }
+
+    const restartGame = () => {
+        board = Array(9)
+        nextPlayer = player1
+        displayController.resetFields()
+    }
+
+    return { playRound, getFieldValue, restartGame}
 })();
 
 
 const displayController = (() => {
     const fields = document.querySelectorAll('.field')
+    const overlay = document.getElementsByClassName("overlay")[0]
 
     fields.forEach((field) => {
         field.addEventListener("click", (e) => {
             gameController.playRound(field.id)
         })
+    })
+
+    overlay.addEventListener("click", (e) => {
+        overlay.classList.remove("active")
+        gameController.restartGame()
     })
 
     const updateField = (player, field) => {
@@ -87,8 +96,16 @@ const displayController = (() => {
             fields[field].querySelector(".cross").classList.add('active')
         }
     }
+    const resetFields = () => {
+        fields.forEach(field => {
+            field.querySelector(".circle").classList.remove('active')
+            field.querySelector(".circle").style.transform = ""
+            field.querySelector(".cross").classList.remove('active')
+            field.querySelector(".cross").style.transform = ""
+        })
+    }
     const displayWinner = (player, winningCombination) => {
-        console.log(winningCombination)
+        overlay.classList.add('active')
         fields.forEach(field => {
             if(winningCombination.indexOf(parseInt(field.id)) !== -1){
                 switch(field.id){
@@ -134,7 +151,7 @@ const displayController = (() => {
             }
         })
     }
-    return { updateField, displayWinner }
+    return { updateField, displayWinner, resetFields }
 })();
 
 
