@@ -21,6 +21,7 @@ header, footer
     background: black
     height: 100%
     width: 100vw
+    z-index: 6
 
 
 main
@@ -29,7 +30,17 @@ main
     align-items: center
     width: 100%
     height: auto
-
+    .overlay
+        display: none
+        position: absolute
+        background: black
+        opacity: 1
+        width: 100%
+        height: 100%
+        z-index: 4
+        animation: darken forwards 0.5s ease-in-out
+    .overlay.active
+        display: block
     .game-container
         width: 400px
         height: 400px
@@ -91,6 +102,10 @@ main
     to  
         stroke-dashoffset: 100px
 
-
+@keyframes darken
+    0% 
+        opacity: 0
+    100%
+        opacity: 0.5
 
     

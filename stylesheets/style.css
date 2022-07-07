@@ -21,6 +21,7 @@ header, footer {
   background: black;
   height: 100%;
   width: 100vw;
+  z-index: 6;
 }
 
 main {
@@ -29,6 +30,19 @@ main {
   align-items: center;
   width: 100%;
   height: auto;
+}
+main .overlay {
+  display: none;
+  position: absolute;
+  background: black;
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+  animation: darken forwards 0.5s ease-in-out;
+}
+main .overlay.active {
+  display: block;
 }
 main .game-container {
   width: 400px;
@@ -98,5 +112,13 @@ main .game-container .board .field .cross.active {
 @keyframes draw-rev {
   to {
     stroke-dashoffset: 100px;
+  }
+}
+@keyframes darken {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.5;
   }
 }/*# sourceMappingURL=style.css.map */
