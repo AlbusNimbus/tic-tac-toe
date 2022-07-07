@@ -51,6 +51,7 @@ main
                 background: $background
 
                 .circle 
+                    z-index: 5
                     display: none
                     position: absolute
                     fill: none
@@ -60,9 +61,13 @@ main
                     stroke-dashoffset: 200px
                     stroke-linecap: round
                     animation: draw forwards 0.3s ease-out
+                    transition: 1s
                 .circle.active 
                     display: block
+                .circle.active.endGame
+                        animation: draw forwards 5s ease-out
                 .cross
+                    z-index: 5
                     display: none
                     position: absolute
                     stroke: $darker-blue
@@ -70,6 +75,7 @@ main
                     stroke-linecap: round
                     stroke-dasharray: 200px
                     stroke-dashoffset: 300px
+                    transition: 1s
                     #line-1
                         animation: draw forwards 0.3s ease-out
                     #line-2
@@ -84,6 +90,7 @@ main
 @keyframes draw-rev 
     to  
         stroke-dashoffset: 100px
+
 
 
     

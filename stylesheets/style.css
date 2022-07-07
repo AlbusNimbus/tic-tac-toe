@@ -51,6 +51,7 @@ main .game-container .board .field {
   background: #f1faee;
 }
 main .game-container .board .field .circle {
+  z-index: 5;
   display: none;
   position: absolute;
   fill: none;
@@ -60,11 +61,16 @@ main .game-container .board .field .circle {
   stroke-dashoffset: 200px;
   stroke-linecap: round;
   animation: draw forwards 0.3s ease-out;
+  transition: 1s;
 }
 main .game-container .board .field .circle.active {
   display: block;
 }
+main .game-container .board .field .circle.active.endGame {
+  animation: draw forwards 5s ease-out;
+}
 main .game-container .board .field .cross {
+  z-index: 5;
   display: none;
   position: absolute;
   stroke: #1d3557;
@@ -72,6 +78,7 @@ main .game-container .board .field .cross {
   stroke-linecap: round;
   stroke-dasharray: 200px;
   stroke-dashoffset: 300px;
+  transition: 1s;
 }
 main .game-container .board .field .cross #line-1 {
   animation: draw forwards 0.3s ease-out;
