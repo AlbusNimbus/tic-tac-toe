@@ -72,6 +72,15 @@ main .endGameModal.cross {
 main .endGameModal.cross .cross {
   display: block;
 }
+main .endGameModal.draw {
+  display: flex;
+}
+main .endGameModal.draw .circle {
+  display: block;
+}
+main .endGameModal.draw .cross {
+  display: block;
+}
 main .overlay {
   display: none;
   position: absolute;
@@ -168,5 +177,6 @@ main div.game-container.active > * {
   }
   100% {
     opacity: 0;
+    transform: scale(0.6);
   }
 }/*# sourceMappingURL=style.css.map */

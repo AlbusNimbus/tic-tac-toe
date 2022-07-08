@@ -11,7 +11,7 @@ const gameController = (() => {
     const player1 = new Player("cross")
     const player2 = new Player("circle")
     let nextPlayer = player1
-
+    let round = 0
     const playRound = (field) => {
         if (!getFieldValue(field)) {
             board[field] = nextPlayer.sign
@@ -53,11 +53,17 @@ const gameController = (() => {
             [2, 4, 6],
         ];
         let isWon = false
+        
         for ( let winCombination of winConditions ) {     
             if (board[winCombination[0]] === board[winCombination[1]] && board[winCombination[1]] === board[winCombination[2]] && board[winCombination[0]] === player.sign) {
                 isWon = true
                 return [isWon, winCombination]
             } 
+        }
+        round += 1
+        if(round == 9){
+            isWon = true
+            return [isWon,[]]
         }
         return [isWon,[]]
         //return winConditions.some((element) => { return (element.every((index) =>{ return( board[index] == player.sign)})) })
@@ -68,6 +74,7 @@ const gameController = (() => {
         board = Array(9)
         nextPlayer = player1
         displayController.resetFields()
+        round = 0
     }
 
     return { playRound, getFieldValue, restartGame}
@@ -111,7 +118,12 @@ const displayController = (() => {
     const displayWinner = (player, winningCombination) => {
         overlay.classList.add('active')
         gameContainer.classList.add('active')
-        setTimeout(()=>{endGameModal.classList.add(player.sign)},1000)
+        if(winningCombination.length != 0){
+            setTimeout(()=>{endGameModal.classList.add(player.sign)},1000)
+        } else {
+            setTimeout(()=>{endGameModal.classList.add("draw")},1000)
+
+        }
         fields.forEach(field => {
             if(winningCombination.indexOf(parseInt(field.id)) !== -1){
                 switch(field.id){
