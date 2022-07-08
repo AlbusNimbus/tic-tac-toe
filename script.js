@@ -77,7 +77,8 @@ const gameController = (() => {
 const displayController = (() => {
     const fields = document.querySelectorAll('.field')
     const overlay = document.getElementsByClassName("overlay")[0]
-
+    const endGameModal = document.getElementsByClassName("endGameModal")[0]
+    const gameContainer = document.getElementsByClassName("game-container")[0]
     fields.forEach((field) => {
         field.addEventListener("click", (e) => {
             gameController.playRound(field.id)
@@ -86,8 +87,11 @@ const displayController = (() => {
 
     overlay.addEventListener("click", (e) => {
         overlay.classList.remove("active")
+        endGameModal.classList = "endGameModal"
+        gameContainer.classList.remove("active")
         gameController.restartGame()
     })
+
 
     const updateField = (player, field) => {
         if (player.sign === "circle") {
@@ -106,44 +110,37 @@ const displayController = (() => {
     }
     const displayWinner = (player, winningCombination) => {
         overlay.classList.add('active')
+        gameContainer.classList.add('active')
+        setTimeout(()=>{endGameModal.classList.add(player.sign)},1000)
         fields.forEach(field => {
             if(winningCombination.indexOf(parseInt(field.id)) !== -1){
                 switch(field.id){
                     case "0":
                         setTimeout(()=>{field.querySelector("."+ player.sign).style.transform = "translate(100%,100%)"},500)
-                        setTimeout(()=>{field.querySelector("."+ player.sign).style.transform += "scale(2)"},1000)
                         break
                     case "1":
                         setTimeout(()=>{field.querySelector("."+ player.sign).style.transform = "translate(0,100%)"},500)
-                        setTimeout(()=>{field.querySelector("."+ player.sign).style.transform += "scale(2)"},1000)
                         break
                     case "2":
                         setTimeout(()=>{field.querySelector("."+ player.sign).style.transform = "translate(-100%,100%)"},500)
-                        setTimeout(()=>{field.querySelector("."+ player.sign).style.transform += "scale(2)"},1000)
                         break
                     case "3":
                         setTimeout(()=>{field.querySelector("."+ player.sign).style.transform = "translate(100%,0)"},500)
-                        setTimeout(()=>{field.querySelector("."+ player.sign).style.transform += "scale(2)"},1000)
                         break
                     case "4":
                         setTimeout(()=>{field.querySelector("."+ player.sign).style.transform = "translate(0,0)"},500)
-                        setTimeout(()=>{field.querySelector("."+ player.sign).style.transform += "scale(2)"},1000)
                         break
                     case "5":
                         setTimeout(()=>{field.querySelector("."+ player.sign).style.transform = "translate(-100%,0)"},500)
-                        setTimeout(()=>{field.querySelector("."+ player.sign).style.transform += "scale(2)"},1000)
                         break
                     case "6":
                         setTimeout(()=>{field.querySelector("."+ player.sign).style.transform = "translate(100%,-100%)"},500)
-                        setTimeout(()=>{field.querySelector("."+ player.sign).style.transform += "scale(2)"},1000)
                         break   
                     case "7":
                         setTimeout(()=>{field.querySelector("."+ player.sign).style.transform = "translate(0,-100%)"},500)
-                        setTimeout(()=>{field.querySelector("."+ player.sign).style.transform += "scale(2)"},1000)
                         break
                     case "8":
                         setTimeout(()=>{field.querySelector("."+ player.sign).style.transform = "translate(-100%,-100%)"},500)
-                        setTimeout(()=>{field.querySelector("."+ player.sign).style.transform += "scale(2)"},1000)
                         break
         
                 }

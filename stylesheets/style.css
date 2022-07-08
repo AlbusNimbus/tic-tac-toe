@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Albert+Sans:wght@500&display=swap");
 * {
   padding: 0px;
   margin: 0px;
@@ -21,6 +22,10 @@ header, footer {
   background: black;
   height: 100%;
   width: 100vw;
+  gap: 1rem;
+  color: #f1faee;
+  font-size: 2rem;
+  font-family: "Albert Sans", sans-serif;
   z-index: 6;
 }
 
@@ -31,18 +36,53 @@ main {
   width: 100%;
   height: auto;
 }
+main .endGameModal {
+  display: none;
+  z-index: 6;
+  width: 400px;
+  height: 400px;
+  position: absolute;
+}
+main .endGameModal .circle {
+  display: none;
+  fill: none;
+  stroke: #e63946;
+  stroke-width: 12px;
+  stroke-dasharray: 200px;
+  transition: 1s;
+  animation: popup forwards 0.5s ease-in-out;
+}
+main .endGameModal .cross {
+  display: none;
+  stroke: #1d3557;
+  stroke-width: 15px;
+  stroke-linecap: round;
+  stroke-dasharray: 200px;
+  animation: popup forwards 0.5s ease-in-out;
+}
+main .endGameModal.circle {
+  display: flex;
+}
+main .endGameModal.circle .circle {
+  display: block;
+}
+main .endGameModal.cross {
+  display: flex;
+}
+main .endGameModal.cross .cross {
+  display: block;
+}
 main .overlay {
   display: none;
   position: absolute;
-  background: black;
   opacity: 1;
   width: 100%;
   height: 100%;
-  z-index: 4;
-  animation: darken forwards 0.5s ease-in-out;
 }
 main .overlay.active {
   display: block;
+  cursor: pointer;
+  z-index: 7;
 }
 main .game-container {
   width: 400px;
@@ -80,9 +120,6 @@ main .game-container .board .field .circle {
 main .game-container .board .field .circle.active {
   display: block;
 }
-main .game-container .board .field .circle.active.endGame {
-  animation: draw forwards 5s ease-out;
-}
 main .game-container .board .field .cross {
   z-index: 5;
   display: none;
@@ -103,6 +140,9 @@ main .game-container .board .field .cross #line-2 {
 main .game-container .board .field .cross.active {
   display: block;
 }
+main div.game-container.active > * {
+  animation: blur forwards 1.5s ease;
+}
 
 @keyframes draw {
   to {
@@ -114,11 +154,19 @@ main .game-container .board .field .cross.active {
     stroke-dashoffset: 100px;
   }
 }
-@keyframes darken {
+@keyframes popup {
   0% {
-    opacity: 0;
+    transform: scale(0.3);
   }
   100% {
-    opacity: 0.5;
+    transform: scale(1);
+  }
+}
+@keyframes blur {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }/*# sourceMappingURL=style.css.map */

@@ -12,12 +12,22 @@
 
 <body>
     <header>
-        <p>Tic Tac Toe</p>
+        <p>TIC-TAC-TOE</p>
     </header>
 
     <main>
         <div class="overlay">
         </div>
+        <div class="endGameModal">
+            <svg class="circle" id="0" viewBox="0 0 100 100">
+                <circle r='30' cx='50' cy='50' />
+            </svg>
+            <svg class="cross" id="0" viewBox="0 0 100 100">
+                <line id="line-1" x1="25" y1="25" x2="75" y2="75" />
+                <line id="line-2" x1="75" y1="25" x2="25" y2="75" />
+            </svg>
+        </div>
+
         <div class="game-container">
             <div class="board">
                 <div class="field" id="0">
@@ -110,7 +120,16 @@
     </main>
 
     <footer>
-        <p>Footer</p>
+        <p>
+            <a class="footer-link " style="text-decoration: none; color: #f1faeeff;"
+                href="https://github.com/AlbusNimbus">AlbusNimbus</a>
+        </p>
+        <p>
+            ©
+        </p>
+        <script>
+            document.write(new Date().getFullYear())
+        </script>
     </footer>
 </body>
 

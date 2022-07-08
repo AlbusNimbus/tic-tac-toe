@@ -1,4 +1,5 @@
 @use "colours" as *
+@use "fonts" as *
 
 *   
     padding: 0px
@@ -21,8 +22,11 @@ header, footer
     background: black
     height: 100%
     width: 100vw
+    gap: 1rem
+    color: $background
+    font-size: 2rem
+    font-family: 'Albert Sans', sans-serif
     z-index: 6
-
 
 main
     display: flex
@@ -30,21 +34,52 @@ main
     align-items: center
     width: 100%
     height: auto
+
+    .endGameModal
+        display: none
+        z-index: 6
+        width: 400px
+        height: 400px
+        position: absolute
+        .circle
+            display: none
+            fill: none
+            stroke: $red
+            stroke-width: 12px
+            stroke-dasharray: 200px
+            transition: 1s
+            animation: popup forwards 0.5s ease-in-out
+        .cross
+            display: none
+            stroke: $darker-blue
+            stroke-width: 15px
+            stroke-linecap: round
+            stroke-dasharray: 200px
+            animation: popup forwards 0.5s ease-in-out
+    .endGameModal.circle
+        display: flex
+        .circle
+            display: block
+    .endGameModal.cross
+        display: flex
+        .cross
+            display: block
+
+
     .overlay
         display: none
         position: absolute
-        background: black
         opacity: 1
         width: 100%
         height: 100%
-        z-index: 4
-        animation: darken forwards 0.5s ease-in-out
+
     .overlay.active
         display: block
+        cursor: pointer
+        z-index: 7
     .game-container
         width: 400px
         height: 400px
-
         .board
             display: grid
             grid-template-row: 1fr 1fr 1fr
@@ -53,14 +88,12 @@ main
             background: $blue
             width:100% 
             height:100% 
-
             .field
                 display: flex
                 position: relative
                 align-items: center
                 justify-content: center
                 background: $background
-
                 .circle 
                     z-index: 5
                     display: none
@@ -75,8 +108,6 @@ main
                     transition: 1s
                 .circle.active 
                     display: block
-                .circle.active.endGame
-                        animation: draw forwards 5s ease-out
                 .cross
                     z-index: 5
                     display: none
@@ -93,6 +124,10 @@ main
                         animation: draw-rev forwards 0.3s ease-out
                 .cross.active
                     display: block
+    
+    div.game-container.active > *
+        animation: blur forwards 1.5s ease
+
 
 @keyframes draw 
     to  
@@ -102,10 +137,14 @@ main
     to  
         stroke-dashoffset: 100px
 
-@keyframes darken
+@keyframes popup
     0% 
-        opacity: 0
+        transform: scale(0.3)
     100%
-        opacity: 0.5
-
+        transform: scale(1)
+@keyframes blur
+    0%
+        opacity: 1
+    100%
+        opacity: 0
     
